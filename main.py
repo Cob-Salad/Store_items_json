@@ -22,14 +22,14 @@ async def get_items() -> list[StoreItem]:
 async def create_item(store_item: StoreItem):
     items.append(store_item)
 
-@app.put("/items")
+@app.put("/items/{item_id}")
 async def update_item(item_id: int, updated_item: StoreItem) -> None:
     for i, item in enumerate(items):
         if item.id == item_id:
             items[i] = updated_item
             return
         
-@app.delete("/items")
+@app.delete("/items/{item_id}")
 async def delete_item(item_id: int) -> None:
     for i, item in enumerate(items):
         if item.id == item_id:
